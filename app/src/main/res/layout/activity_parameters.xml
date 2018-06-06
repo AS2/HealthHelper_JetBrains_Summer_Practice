@@ -1,34 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ParametersActivity">
 
+
+
     <EditText
         android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:id="@+id/age"
-        android:text="Age"
+        android:id="@+id/height"
+        android:gravity="center"
+        android:inputType="number"
+        android:text="Height"
         />
-        
+
     <EditText
+        android:id="@+id/weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/height"
+        android:inputType="number"
+        android:text="Weight"
+        android:layout_marginLeft="45dp"/>
+
+    <EditText
+        android:layout_marginHorizontal="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:id="@+id/age"
+        android:layout_below="@id/weight"
+        android:gravity="center"
+        android:text="Age"
         />
     
     <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
+        android:layout_below="@id/age"
         android:layout_height="wrap_content"
-        android:id="@+id/sex">
+        android:id="@+id/sex"
+        android:background="#ff4747">
     </Spinner>
 
     <Spinner
+
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lifestyle">
+        android:layout_below="@id/sex"
+        android:id="@+id/lifestyle"
+        android:background="#ff4747">
+
     </Spinner>
-    
-    
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
+        android:background="#ff4747"
+        android:textSize="10dp"
+        android:text="Save parameters"
+        />
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/returndp"
+        android:background="#ff4747"
+        android:textSize="10dp"
+        android:text="Return to default"
+        />
+
+
+</RelativeLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EatenActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/rlayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Eaten today:"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:id="@+id/namelayout"/>
+
+        <ListView
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/namelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listeaten"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/total"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="Total:"/>
+
+        <TextView
+            android:layout_below="@id/total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/protein"
+            android:text="  • Protein:"/>
+
+        <TextView
+            android:layout_below="@id/protein"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/carbohydrates"
+            android:text="  • Carbohydrates:"/>
+
+        <TextView
+            android:layout_below="@id/carbohydrates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fats"
+            android:text="  • Fats:"/>
+
+        <TextView
+            android:layout_below="@id/fats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calories"
+            android:text="  • Calories:"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

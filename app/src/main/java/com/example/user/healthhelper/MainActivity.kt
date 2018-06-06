@@ -12,9 +12,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         add.setOnClickListener {
-            val intent = Intent(this, AddProductActivity::class.java)
+            val intent_add = Intent(this, AddProductActivity::class.java)
 
-            startActivity(intent)
+            startActivity(intent_add)
+        }
+
+        eaten.setOnClickListener {
+            val intent_teaten = Intent(this, EatenActivity::class.java)
+
+            startActivity(intent_teaten)
+        }
+
+        recomendations.setOnClickListener {
+            val intent_rec = Intent(this, RecomendationsActivity::class.java)
+
+            startActivity(intent_rec)
+        }
+
+        params.setOnClickListener {
+            val intent_params = Intent(this, ParametersActivity::class.java)
+
+            startActivity(intent_params)
         }
     }
 }

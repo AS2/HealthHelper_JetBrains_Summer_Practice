@@ -19,10 +19,20 @@
         <activity
             android:name=".AddProductActivity"
             android:label="Add new product"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".ParametersActivity"
+            android:parentActivityName=".MainActivity"
+            />
+        <activity
+            android:name=".ParametersActivity"
             android:label="Parameters"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RecomendationsActivity"
+            android:label="Suggestions"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EatenActivity"
+            android:label="Today eaten"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

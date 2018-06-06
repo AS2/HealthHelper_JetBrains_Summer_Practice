@@ -16,7 +16,5 @@ class AddProductActivity : AppCompatActivity() {
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
         productlist.adapter = adapter
-
-
     }
 }
