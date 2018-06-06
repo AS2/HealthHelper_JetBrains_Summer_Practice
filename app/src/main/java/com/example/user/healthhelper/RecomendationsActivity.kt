@@ -31,9 +31,13 @@ class RecomendationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recomendations)
 
-        var recomendations : Array<recomendation>?
+        var data = Array<String>(100,
+                {i ->
+                    if (i % 2 == 0)
+                        "kek"
+                    else
+                        "lol"})
 
-        val data = arrayOf("More belok", "Less sugar")
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)
 
         recomlist.setAdapter(adapter)

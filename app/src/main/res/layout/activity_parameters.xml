@@ -18,7 +18,7 @@
         android:id="@+id/height"
         android:gravity="center"
         android:inputType="number"
-        android:text="Height"
+        android:hint="Height"
         />
 
     <EditText
@@ -30,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/height"
         android:inputType="number"
-        android:text="Weight"
+        android:hint="Weight"
         android:layout_marginLeft="45dp"/>
 
     <EditText
@@ -42,7 +42,7 @@
         android:id="@+id/age"
         android:layout_below="@id/weight"
         android:gravity="center"
-        android:text="Age"
+        android:hint="Age"
         />
     
     <Spinner
