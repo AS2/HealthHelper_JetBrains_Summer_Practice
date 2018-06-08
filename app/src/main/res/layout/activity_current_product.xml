@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CurrentProductActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:id="@+id/infotitle"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infotitle"
+            android:text="This product contain:"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/info"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/info"
+            android:id="@+id/infoprotein"
+            android:text="      • Protein:"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infoprotein"
+            android:id="@+id/infofats"
+            android:text="      • Fats:"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infofats"
+            android:id="@+id/infocarbo"
+            android:text="      • Carbohydrates:"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infocarbo"
+            android:id="@+id/infocalories"
+            android:text="      • Calories:"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/infocalories"
+            android:id="@+id/mass"
+            android:text="Mass (gr):"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@id/mass"
+            android:layout_height="wrap_content"
+            android:id="@+id/infomass"
+            android:gravity="center"
+            android:inputType="number"
+            android:hint="Mass (gr)"
+            android:text="100"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/infocalc"
+            android:text="calculate"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/infomass"
+            android:layout_marginHorizontal="40dp"
+            android:background="#ff4747"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/infobutton"
+            android:text="eat!"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="20dp"
+            android:background="#ff4747"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

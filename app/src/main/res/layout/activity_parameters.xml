@@ -76,8 +76,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/save"
         android:background="#ff4747"
-        android:textSize="10dp"
-        android:text="Save parameters"
+        android:textSize="20dp"
+        android:text="Save"
         />
 
     <Button
@@ -89,8 +89,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/returndp"
         android:background="#ff4747"
-        android:textSize="10dp"
-        android:text="Return to default"
+        android:textSize="20dp"
+        android:text="Return"
         />
 
 

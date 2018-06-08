@@ -9,12 +9,12 @@ import java.sql.Types.NULL
 
 
 class Persondata{
-    var height: Int = 0
-    var weight: Int = 0
-    var age: Int = 0
-    var sex: Int = 0
-    var active: Double = 1.0
-    var maxCal: Double =  0.0
+    public var height: Int = 0
+    public var weight: Int = 0
+    public var age: Int = 0
+    public var sex: Int = 0
+    public var active: Double = 1.0
+    public var maxCal: Double =  0.0
 
 }
 

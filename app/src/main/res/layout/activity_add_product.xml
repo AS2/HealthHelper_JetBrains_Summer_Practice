@@ -6,19 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".AddProductActivity">
 
-    <EditText
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/searchblock">
+    <EditText
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/searchproducts"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginHorizontal="10dp"
-        android:text="Search"/>
+        android:hint="Search product" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:id="@+id/searchbutton"
+        android:background="#ff4747"
+        />
+    </RelativeLayout>
 
     <ListView
-        android:layout_below="@id/searchproducts"
+        android:layout_below="@id/searchblock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/productlist"></ListView>
+        android:id="@+id/productlist"/>
 
 </RelativeLayout>
