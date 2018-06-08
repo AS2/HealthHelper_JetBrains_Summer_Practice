@@ -35,11 +35,15 @@
         <activity
             android:name=".OneRecomendationActivity"
             android:label="Current suggestion"
-            android:parentActivityName=".RecomendationsActivity"/>
+            android:parentActivityName=".RecomendationsActivity" />
         <activity
             android:name=".CurrentProductActivity"
             android:label="Product info"
-            android:parentActivityName=".AddProductActivity"></activity>
+            android:parentActivityName=".AddProductActivity" />
+        <activity
+            android:name=".AddNewProductActivity"
+            android:label="Add new product"
+            android:parentActivityName=".AddProductActivity"/>
     </application>
 
 </manifest>

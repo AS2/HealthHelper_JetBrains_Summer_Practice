@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_parameters.*
 import java.sql.Types.NULL
 
@@ -51,6 +52,26 @@ class ParametersActivity : AppCompatActivity() {
             Person.maxCal = (10 * Person.weight + 6.25 * Person.height - 5 * Person.age + Person.sex) * Person.active
             Log.d("demo",  "${Person.maxCal}")
 
+
+            val text = "Parameters have been saved!"
+            val duration = Toast.LENGTH_SHORT
+
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+        }
+
+        returndp.setOnClickListener {
+            Person.maxCal = 0.0
+            Person.height = 0
+            Person.weight = 0
+            Person.age = 0
+            Person.sex = 0
+            Person.active = 1.0
+
+            val text = "Parameters have been returned!"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
         }
     }
 }
