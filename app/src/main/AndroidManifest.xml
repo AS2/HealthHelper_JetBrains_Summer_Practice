@@ -43,6 +43,9 @@
         <activity
             android:name=".AddNewProductActivity"
             android:label="Add new product"
+            android:parentActivityName=".AddProductActivity" />
+        <activity android:name=".DeleteProductActivity"
+            android:label="Delete product"
             android:parentActivityName=".AddProductActivity"/>
     </application>
 

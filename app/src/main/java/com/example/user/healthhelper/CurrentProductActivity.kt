@@ -65,6 +65,7 @@ class CurrentProductActivity : AppCompatActivity() {
             intent_te.putExtra("totalcarbo", Carbohydrates)
             intent_te.putExtra("totalfats", Fats)
             intent_te.putExtra("totalcalories", Calories)
+            intent_te.putExtra("totalmass", infomass.text.toString().toInt())
             Log.d("demo" ,"CurrentProduct send name!")
             startActivity(intent_te)
             isSended = true

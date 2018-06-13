@@ -13,7 +13,7 @@ class AddNewProductActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_new_product)
 
         addbutton.setOnClickListener {
-            var product_table = DatabaseHandler(this)
+            var product_table = ProductDatabaseHandler(this)
             product_table.AddProduct(productname.text.toString(), productcalories.text.toString().toInt(),
                     productfats.text.toString().toInt(), productprotein.text.toString().toInt(), productcarbohydrates.text.toString().toInt())
 

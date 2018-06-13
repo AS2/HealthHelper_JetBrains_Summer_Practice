@@ -41,7 +41,7 @@ class AddProductActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
 
-        var product_table = DatabaseHandler(this)
+        var product_table = ProductDatabaseHandler(this)
 
 
         //println(product_table.AddProduct(pr))
@@ -58,7 +58,7 @@ class AddProductActivity : AppCompatActivity() {
 //        product_table.AddProduct("Meat", 202, 13, 18, 4)
 //        product_table.AddProduct("Cheese", 350, 26, 26, 0)
 //        product_table.AddProduct("Yogurt", 62, 4, 3, 5)
-//        product_table.AddProduct("Tide pods", 450, 0, 100, 100)
+//          product_table.AddProduct("Tide pods", 450, 0, 100, 100)
 //        product_table.AddProduct("Apple", 37, 0, 0, 8)
 //        product_table.AddProduct("Banana", 89, 0, 1, 21)
 //        product_table.AddProduct("Bread", 212, 1, 7, 42)
@@ -80,7 +80,7 @@ class AddProductActivity : AppCompatActivity() {
         }
 
         data_filtered.add("Add new product")
-        data_filtered.add("Deleted product")
+        data_filtered.add("Delete product")
 
         for (prod in products) {
             data.add(prod.prod_name)
@@ -112,7 +112,7 @@ class AddProductActivity : AppCompatActivity() {
             data_filtered.clear()
 
             data_filtered.add("Add new product")
-            data_filtered.add("Deleted product")
+            data_filtered.add("Delete product")
 
             for(p in products_filtered)
                 data_filtered.add(p.prod_name)
@@ -134,7 +134,10 @@ class AddProductActivity : AppCompatActivity() {
                     val intent_anp = Intent(this, AddNewProductActivity::class.java)
                     startActivity(intent_anp)
                 }
-                1 -> Log.d("demo", "Delete product")
+                1 -> {
+                    val intent_anp = Intent(this, DeleteProductActivity::class.java)
+                    startActivity(intent_anp)
+                }
                 else -> {
                     intent_currentprod.putExtra("name", products_filtered[position - 2].prod_name)
                     intent_currentprod.putExtra("protein", products_filtered[position - 2].prod_protein)

@@ -7,23 +7,23 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 
-class ProductDatabaseHandler : SQLiteOpenHelper {
+class PersonDatabaseHandler : SQLiteOpenHelper {
 
 
     companion object {
-
         val Tag = "DatabaseHandler"
-        val DBName = "ProductListDB"
+        val DBName = "PersonProductDB"
         val DBVersion = 1
 
-        val prodId = "id"
+        val persId = "id"
 
-        val tableName = "products"
-        val productname = "pname"
-        val productcalories = "pcalories"
-        val productprotein = "pprotein"
-        val productfats = "pfats"
-        val productcarbohydrates = "pcarbohydrates"
+        val tableName = "person_param"
+        val persHeight = "pheight"
+        val persWeight = "pweight"
+        val persAge = "page"
+        val persSex = "psex"
+        val persActive = "pactive"
+        val persMaxCal = "pmaxCal"
     }
 
     var context: Context? = null
@@ -39,8 +39,8 @@ class ProductDatabaseHandler : SQLiteOpenHelper {
 
         //SQL for creating table
         var sql1: String = "CREATE TABLE IF NOT EXISTS " + tableName + " " +
-                "("+ prodId + " INTEGER PRIMARY KEY,"  + productname + " TEXT, " + productcalories + " INTEGER, " + productprotein +
-                " INTEGER," + productfats + " INTEGER," + productcarbohydrates  + " INTEGER );"
+                "("+ persId + " INTEGER PRIMARY KEY,"  + persHeight + " INTEGER, " + persWeight + " INTEGER, " + persAge +
+                " INTEGER," + persSex + " INTEGER," + persActive + " REAL," + persMaxCal  + " REAL );"
 
         p0!!.execSQL(sql1);
     }
@@ -52,14 +52,15 @@ class ProductDatabaseHandler : SQLiteOpenHelper {
 
     }
 
-    fun AddProduct(name: String, calories: Int, fats: Int, protein: Int, carbohydrates: Int): String {
-        var pr = ContentValues()
+    fun AddPerson(Height: Int, Weight: Int, Age : Int, Sex : Int, Active : Double, MaxCal : Double): String {
+        val pr = ContentValues()
 
-        pr.put(ProductDatabaseHandler.productname, name)
-        pr.put(ProductDatabaseHandler.productcalories, calories)
-        pr.put(ProductDatabaseHandler.productprotein, fats)
-        pr.put(ProductDatabaseHandler.productfats, protein)
-        pr.put(ProductDatabaseHandler.productcarbohydrates, carbohydrates)
+        pr.put(TotalDatabaseHandler.totalname, Height)
+        pr.put(TotalDatabaseHandler.totalcalories, Weight)
+        pr.put(TotalDatabaseHandler.totalprotein, Age)
+        pr.put(TotalDatabaseHandler.totalfats, Sex)
+        pr.put(TotalDatabaseHandler.totalcarbohydrates, Active)
+        pr.put(TotalDatabaseHandler.totaltime, MaxCal)
 
         var Msg: String = "error";
         val ID = sqlObj!!.insert(tableName, "", pr)
@@ -69,23 +70,23 @@ class ProductDatabaseHandler : SQLiteOpenHelper {
         return Msg
     }
 
-    fun FetchProducts(keyword: String, isAllProducts : Boolean): ArrayList<product> {
+    fun FetchProducts(keyword: String, isAllProducts : Boolean): ArrayList<Persondata> {
 
-        var arraylist = ArrayList<product>()
+        var arraylist = ArrayList<Persondata>()
 
         val sqb = SQLiteQueryBuilder()
         sqb.tables = tableName
-        val cols = arrayOf(prodId, productname, productcalories, productprotein,
-                productfats, productcarbohydrates)
+        val cols = arrayOf(persId, persHeight, persWeight, persAge,
+                persSex, persActive, persMaxCal)
         val rowSelArg = arrayOf(keyword)
 
         val cur : Cursor
 
         if (isAllProducts) {
-            cur = sqb.query(sqlObj, cols, null, null, null, null, "pname")
+            cur = sqb.query(sqlObj, cols, null, null, null, null, "pheight")
         }
         else {
-            cur  = sqb.query(sqlObj, cols, "pname like ?", rowSelArg, null, null, "pname")
+            cur  = sqb.query(sqlObj, cols, "pheight like ?", rowSelArg, null, null, "pheight")
         }
 
 
@@ -93,14 +94,15 @@ class ProductDatabaseHandler : SQLiteOpenHelper {
         if (cur.moveToFirst()) {
 
             do {
-                val id = cur.getInt(cur.getColumnIndex(prodId))
-                val name = cur.getString(cur.getColumnIndex(productname))
-                val calories = cur.getInt(cur.getColumnIndex(productcalories))
-                val protein = cur.getInt(cur.getColumnIndex(productprotein))
-                val fats = cur.getInt(cur.getColumnIndex(productfats))
-                val carbohydrates = cur.getInt(cur.getColumnIndex(productcarbohydrates))
+                val id = cur.getInt(cur.getColumnIndex(persId))
+                val hght = cur.getInt(cur.getColumnIndex(persHeight))
+                val wght = cur.getInt(cur.getColumnIndex(persWeight))
+                val age = cur.getInt(cur.getColumnIndex(persAge))
+                val sex = cur.getInt(cur.getColumnIndex(persSex))
+                val active = cur.getDouble(cur.getColumnIndex(persActive))
+                val maxcal = cur.getDouble(cur.getColumnIndex(persMaxCal))
 
-                arraylist.add(product(name, calories, protein, fats, carbohydrates, id))
+                arraylist.add(Persondata(hght, wght, age, sex, active, maxcal, id))
 
             } while (cur.moveToNext())
         }
