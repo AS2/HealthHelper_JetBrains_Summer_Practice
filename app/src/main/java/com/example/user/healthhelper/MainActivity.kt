@@ -11,6 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val serviceintent = Intent(this, MyService::class.java)
+        //startService(serviceintent)
+
         add.setOnClickListener {
             val intent_add = Intent(this, AddProductActivity::class.java)
 
@@ -34,5 +37,6 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent_params)
         }
+
     }
 }

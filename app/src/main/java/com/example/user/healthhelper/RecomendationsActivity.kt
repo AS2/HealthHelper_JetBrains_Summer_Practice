@@ -34,15 +34,8 @@ class recomendation (title : String, content : String, id : Int, time : Int, che
 
 class RecomendationsActivity : AppCompatActivity() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_recomendations)
-        val data = mutableListOf<String>()
-
-
+    fun MakeRecomendations() {
         var eatenproducts_list = TotalDatabaseHandler(this)
-        var products_list = ProductDatabaseHandler(this)
         val params_list = PersonDatabaseHandler(this)
         var isPersonalDataFull : Boolean = false
 
@@ -50,8 +43,6 @@ class RecomendationsActivity : AppCompatActivity() {
         var eatenFats : Double = .0
         var eatenProtein : Double = .0
         var eatenCarbohydrates : Double = .0
-
-        val products_arr = products_list.FetchProducts("Bread", true)
 
         val persondata_arr = params_list.FetchProducts("bread", true)
         for (pers in persondata_arr) {
@@ -73,18 +64,15 @@ class RecomendationsActivity : AppCompatActivity() {
             eatenProtein += prod.total_protein
         }
 
-
-        var recomendations = mutableListOf<recomendation>()
         val rec_dblist = RecomendationsDatabaseHandler(this)
         var recom_arr = rec_dblist.FetchProducts("Bread", true)
 
-        val sdf = SimpleDateFormat("yy:DD")
-        val currentDate = sdf.format(Date())
-
         for (rec in recom_arr) {
-            rec_dblist.RemoveProduct(rec.Id)
+            Log.d("demo", "${rec_dblist.RemoveProduct(rec.Id)}")
         }
 
+        val sdf = SimpleDateFormat("yy:DD")
+        val currentDate = sdf.format(Date())
 
         if (isPersonalDataFull && eatenCalories != 0.0) {
             val maxFats : Double = (persondata_arr[0].maxCal * 0.2) / 9
@@ -94,7 +82,7 @@ class RecomendationsActivity : AppCompatActivity() {
             var tooFat = totalproduct("", .0, .0, .0, .0, 0)
 
             if (eatenFats < maxFats * 0.8) {
-                rec_dblist.AddTotalProduct("Too little fats",
+                rec_dblist.AddTotalProduct("Not enough fats",
                         "You eat too few fats. We recommended you to eat more fat food or include in your died products like:; " +
                                 "cheese, eggs, fish, beef",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
@@ -113,8 +101,8 @@ class RecomendationsActivity : AppCompatActivity() {
             }
 
             if (eatenProtein < maxProtein * 0.8) {
-                rec_dblist.AddTotalProduct("Too little protein",
-                        "You eat to few protein. We recommended you to eat more food includes much protein or include in your died products like:; " +
+                rec_dblist.AddTotalProduct("Not enough protein",
+                        "You eat too few protein. We recommended you to eat more food includes much protein or include in your died products like:; " +
                                 "fish, chicken, kidney beans, mozzarella",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
@@ -126,14 +114,14 @@ class RecomendationsActivity : AppCompatActivity() {
                 }
 
                 rec_dblist.AddTotalProduct("Too much protein",
-                        "You eat to much protein. We recommended you to eat less food witch much protein or exclude from your died products like:; " +
+                        "You eat too much protein. We recommended you to eat less food witch much protein or exclude from your died products like:; " +
                                 "${tooFat.total_name}, , , ",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
 
             if (eatenCarbohydrates < maxCarbohydrates * 0.8) {
-                rec_dblist.AddTotalProduct("Too little carbohydrates",
-                        "You eat to few carbohydrates. We recommended you to eat more food with much carbohydrates or include in your died products like:; " +
+                rec_dblist.AddTotalProduct("Not enough carbohydrates",
+                        "You eat too few carbohydrates. We recommended you to eat more food with much carbohydrates or include in your died products like:; " +
                                 "rice, spaghetti, bread, roasted potato",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
@@ -145,14 +133,14 @@ class RecomendationsActivity : AppCompatActivity() {
                 }
 
                 rec_dblist.AddTotalProduct("Too much carbohydrates",
-                        "You eat to much carbohydrates. We recommended you to eat less food with much carbohydrates or exclude from your died products like:; " +
+                        "You eat too much carbohydrates. We recommended you to eat less food with much carbohydrates or exclude from your died products like:; " +
                                 "${tooFat.total_name}, , , ",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
 
             if (eatenCalories < persondata_arr[0].maxCal * 0.8) {
-                rec_dblist.AddTotalProduct("Too little calories",
-                        "You eat to few calories. We recommended you to eat more food with much calories or include in your died products like:; " +
+                rec_dblist.AddTotalProduct("Not enough calories",
+                        "You eat too few calories. We recommended you to eat more food with much calories or include in your died products like:; " +
                                 "cacao, nut, smoked sausage, sugar",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
@@ -164,15 +152,30 @@ class RecomendationsActivity : AppCompatActivity() {
                 }
 
                 rec_dblist.AddTotalProduct("Too much calories",
-                        "You eat to much calories. We recommended you to eat less food with calories or exclude from your died products like:; " +
+                        "You eat too much calories. We recommended you to eat less food with calories or exclude from your died products like:; " +
                                 "${tooFat.total_name}, , , ",
                         currentDate.split(":")[0].toInt() * 365 + currentDate.split(":")[1].toInt(), 0)
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_recomendations)
+        val data = mutableListOf<String>()
+
+        val rec_dblist = RecomendationsDatabaseHandler(this)
+        var recom_arr = rec_dblist.FetchProducts("Bread", true)
+
+        MakeRecomendations()
+
+        for (rec in recom_arr) {
+            //Log.d("demo", "${rec_dblist.RemoveProduct(rec.Id)}")
+        }
 
         recom_arr = rec_dblist.FetchProducts("Bread", true)
         for (rec in recom_arr) {
-            data.add("${SimpleDateFormat("dd:MM:yyyy").format(Date())} - " + rec.getTitle())
+            data.add("${SimpleDateFormat("HH:mm - dd:MM:yyyy").format(Date())} - " + rec.getTitle())
         }
 
         val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data)

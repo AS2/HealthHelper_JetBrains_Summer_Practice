@@ -127,7 +127,10 @@ class EatenActivity : AppCompatActivity() {
 
         if (oldYearAndDay[0].toInt() == newYearAndDay[0].toInt() && oldYearAndDay[1].toInt() == newYearAndDay[1].toInt()) {
             for (prod in arr) {
-                data.add("${prod.total_time / 60}:${prod.total_time - (prod.total_time / 60) * 60} - " + "${prod.total_name}")
+                if (prod.total_time - (prod.total_time / 60) * 60 < 10)
+                    data.add("${prod.total_time / 60}:0${prod.total_time - (prod.total_time / 60) * 60} - " + "${prod.total_name}")
+                else
+                    data.add("${prod.total_time / 60}:0${prod.total_time - (prod.total_time / 60) * 60} - " + "${prod.total_name}")
                 eatenCalories += prod.total_calories
                 eatenCarbohydrates += prod.total_carbonyhydrates
                 eatenFats += prod.total_fats

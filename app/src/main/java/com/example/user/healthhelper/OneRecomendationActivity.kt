@@ -33,10 +33,10 @@ class OneRecomendationActivity : AppCompatActivity() {
 
         rdate.text = "${true_rec.Time / 365 + 2000} year, ${true_rec.Time - true_rec.Time / 365 * 365} day"
         rcontent.text = " ${ContentBlocks[0]}"
-        rexmpl1.text = "      • ${ContentBlocks[1]}"
-        rexmpl2.text = "      • ${ContentBlocks[2]}"
-        rexmpl3.text = "      • ${ContentBlocks[3]}"
-        rexmpl4.text = "      • ${ContentBlocks[4]}"
+        rexmpl1.text = "        ${ContentBlocks[1]}"
+        rexmpl2.text = "        ${ContentBlocks[2]}"
+        rexmpl3.text = "        ${ContentBlocks[3]}"
+        rexmpl4.text = "        ${ContentBlocks[4]}"
 
     }
 }

@@ -51,26 +51,26 @@ class AddProductActivity : AppCompatActivity() {
 //        }
 
 
-//        product_table.AddProduct("Coffee", 7, 1, 0, 0)
-//        product_table.AddProduct("Tea", 28, 0, 0, 7)
-//        product_table.AddProduct("Soup", 42, 2, 1, 5)
-//        product_table.AddProduct("Porage", 105, 4, 3, 14)
-//        product_table.AddProduct("Meat", 202, 13, 18, 4)
-//        product_table.AddProduct("Cheese", 350, 26, 26, 0)
-//        product_table.AddProduct("Yogurt", 62, 4, 3, 5)
-//          product_table.AddProduct("Tide pods", 450, 0, 100, 100)
-//        product_table.AddProduct("Apple", 37, 0, 0, 8)
-//        product_table.AddProduct("Banana", 89, 0, 1, 21)
-//        product_table.AddProduct("Bread", 212, 1, 7, 42)
-//        product_table.AddProduct("Water", 0, 0, 0, 0)
+   //     product_table.AddProduct("Coffee", 7, 1, 0, 0)
+   //     product_table.AddProduct("Tea", 28, 0, 0, 7)
+   //     product_table.AddProduct("Soup", 42, 2, 1, 5)
+   //     product_table.AddProduct("Porage", 105, 4, 3, 14)
+   //     product_table.AddProduct("Meat", 202, 13, 18, 4)
+   ////     product_table.AddProduct("Cheese", 350, 26, 26, 0)
+  //      product_table.AddProduct("Yogurt", 62, 4, 3, 5)
+   //       product_table.AddProduct("Tide pods", 450, 0, 100, 100)
+  //      product_table.AddProduct("Apple", 37, 0, 0, 8)
+  //      product_table.AddProduct("Banana", 89, 0, 1, 21)
+  //      product_table.AddProduct("Bread", 212, 1, 7, 42)
+  //      product_table.AddProduct("Water", 0, 0, 0, 0)
 
 
-//        val arr = product_table.FetchProducts("bread", true)
-//        for(items in arr) {
-//            product_table.RemoveProduct(items.prodId)
-//        }
+        var arr = product_table.FetchProducts("bread", true)
+        for(items in arr) {
+           // product_table.RemoveProduct(items.prodId)
+        }
 
-        val arr = product_table.FetchProducts("bread", true)
+         arr = product_table.FetchProducts("bread", true)
         for(items in arr) {
             println(items.prod_name)
         }
