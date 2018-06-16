@@ -43,7 +43,7 @@ class ParametersActivity : AppCompatActivity() {
         var arr = person_datalist.FetchProducts("bread", true)
 
         for (pers in arr) {
-            personCount+=1
+            Log.d("Demo", "${pers.height}, ${pers.weight}, ${pers.age}, ${pers.sex}, ${pers.active}, ${pers.maxCal}")
         }
 
 

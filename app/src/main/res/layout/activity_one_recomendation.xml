@@ -11,15 +11,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_height="match_parent"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp">
+        android:layout_marginVertical="20dp"
+        android:layout_marginHorizontal="20dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:id="@+id/title"
+            android:id="@+id/rtitle"
             android:text="Title"
             android:textSize="40dp"
             android:textStyle="bold"/>
@@ -27,10 +27,66 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/title"
+            android:layout_below="@id/rtitle"
+            android:layout_marginTop="-10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/rdate"
+            android:text="date"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/rdate"
             android:layout_marginTop="10dp"
-            android:text="Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content "
+            android:id="@+id/rcontent"
+            android:text="Content"
             android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/rcontent"
+            android:id="@+id/rexmpl1"
+            android:layout_marginTop="10dp"
+            android:text="      • Example1"
+            android:textStyle="italic"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/rexmpl1"
+            android:id="@+id/rexmpl2"
+            android:layout_marginTop="10dp"
+            android:text="      • Example2"
+            android:textStyle="italic"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/rexmpl2"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rexmpl3"
+            android:textStyle="italic"
+            android:text="      • Example3"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/rexmpl4"
+            android:layout_below="@id/rexmpl3"
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:text="      • Example4"
+            android:textSize="20dp"/>
+
     </RelativeLayout>
 
 </RelativeLayout>

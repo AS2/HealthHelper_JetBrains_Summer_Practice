@@ -7,23 +7,19 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.database.sqlite.SQLiteQueryBuilder
 
-class PersonDatabaseHandler : SQLiteOpenHelper {
+class TimeCheckerDatabaseHandler : SQLiteOpenHelper {
 
 
     companion object {
+
         val Tag = "DatabaseHandler"
-        val DBName = "PersonProductDB"
+        val DBName = "timechecker"
         val DBVersion = 1
 
-        val persId = "id"
+        val timeId = "id"
 
-        val tableName = "person_param"
-        val persHeight = "pheight"
-        val persWeight = "pweight"
-        val persAge = "page"
-        val persSex = "psex"
-        val persActive = "pactive"
-        val persMaxCal = "pmaxCal"
+        val tableName = "lasttimeupdate"
+        val lastTimeUpdate = "ltu"
     }
 
     var context: Context? = null
@@ -39,8 +35,7 @@ class PersonDatabaseHandler : SQLiteOpenHelper {
 
         //SQL for creating table
         var sql1: String = "CREATE TABLE IF NOT EXISTS " + tableName + " " +
-                "("+ persId + " INTEGER PRIMARY KEY,"  + persHeight + " INTEGER, " + persWeight + " INTEGER, " + persAge +
-                " INTEGER," + persSex + " INTEGER," + persActive + " REAL," + persMaxCal  + " REAL );"
+                "("+ timeId + " INTEGER PRIMARY KEY,"  + lastTimeUpdate + " TEXT );"
 
         p0!!.execSQL(sql1);
     }
@@ -52,15 +47,10 @@ class PersonDatabaseHandler : SQLiteOpenHelper {
 
     }
 
-    fun AddPerson(Height: Int, Weight: Int, Age : Int, Sex : Int, Active : Double, MaxCal : Double): String {
-        val pr = ContentValues()
+    fun AddNewTime(newTime : String): String {
+        var pr = ContentValues()
 
-        pr.put(PersonDatabaseHandler.persHeight, Height)
-        pr.put(PersonDatabaseHandler.persWeight, Weight)
-        pr.put(PersonDatabaseHandler.persAge, Age)
-        pr.put(PersonDatabaseHandler.persSex, Sex)
-        pr.put(PersonDatabaseHandler.persActive, Active)
-        pr.put(PersonDatabaseHandler.persMaxCal, MaxCal)
+        pr.put(TimeCheckerDatabaseHandler.lastTimeUpdate, newTime)
 
         var Msg: String = "error";
         val ID = sqlObj!!.insert(tableName, "", pr)
@@ -70,23 +60,22 @@ class PersonDatabaseHandler : SQLiteOpenHelper {
         return Msg
     }
 
-    fun FetchProducts(keyword: String, isAllProducts : Boolean): ArrayList<Persondata> {
+    fun FetchProducts(keyword: String, isAllProducts : Boolean): ArrayList<timeCheckerClass> {
 
-        var arraylist = ArrayList<Persondata>()
+        var arraylist = ArrayList<timeCheckerClass>()
 
         val sqb = SQLiteQueryBuilder()
         sqb.tables = tableName
-        val cols = arrayOf(persId, persHeight, persWeight, persAge,
-                persSex, persActive, persMaxCal)
+        val cols = arrayOf(timeId, lastTimeUpdate)
         val rowSelArg = arrayOf(keyword)
 
         val cur : Cursor
 
         if (isAllProducts) {
-            cur = sqb.query(sqlObj, cols, null, null, null, null, "pheight")
+            cur = sqb.query(sqlObj, cols, null, null, null, null, "ltu")
         }
         else {
-            cur  = sqb.query(sqlObj, cols, "pheight like ?", rowSelArg, null, null, "pheight")
+            cur  = sqb.query(sqlObj, cols, "ltu like ?", rowSelArg, null, null, "ltu")
         }
 
 
@@ -94,15 +83,10 @@ class PersonDatabaseHandler : SQLiteOpenHelper {
         if (cur.moveToFirst()) {
 
             do {
-                val id = cur.getInt(cur.getColumnIndex(persId))
-                val hght = cur.getInt(cur.getColumnIndex(persHeight))
-                val wght = cur.getInt(cur.getColumnIndex(persWeight))
-                val age = cur.getInt(cur.getColumnIndex(persAge))
-                val sex = cur.getInt(cur.getColumnIndex(persSex))
-                val active = cur.getDouble(cur.getColumnIndex(persActive))
-                val maxcal = cur.getDouble(cur.getColumnIndex(persMaxCal))
+                val id = cur.getInt(cur.getColumnIndex(timeId))
+                val name = cur.getString(cur.getColumnIndex(lastTimeUpdate))
 
-                arraylist.add(Persondata(hght, wght, age, sex, active, maxcal, id))
+                arraylist.add(timeCheckerClass(id, name))
 
             } while (cur.moveToNext())
         }
